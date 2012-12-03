@@ -10,7 +10,8 @@ def plot_fft(t, signal, reconstruct=True, **kwargs):
     reconstruct = Option to re-compute the signal based on FFT results 
                   (adds time, default is True)
     title       = Title for plots
-    period_xlim = X-limit to use for period subplot
+    period_xlim = X-limits to use for period subplot
+    period_ylim = Y-limits to use for period subplot
     """
     
     # Compute number of data points
@@ -72,6 +73,8 @@ def plot_fft(t, signal, reconstruct=True, **kwargs):
     ylabel('Signal Amplitude')
     if kwargs.has_key('period_xlim'):
         xlim(kwargs['period_xlim'])
+    if kwargs.has_key('period_ylim'):
+        ylim(kwargs['period_ylim'])
     tight_layout()
 
 
@@ -82,25 +85,25 @@ x = fetch.Msidset(['pitch', 'pftank1t', 'pftank2t', 'pline01t', 'pline02t',
                    'pline07t'], '2011:001', '2013:001', stat='5min')
 
 # IPS Tank
-plot_fft(x['pftank1t'].times, x['pftank1t'].vals, reconstruct=False, title='IPS Tank:  PFTANK1T', cxctime=True, period_xlim=[0,50])
+plot_fft(x['pftank1t'].times, x['pftank1t'].vals, reconstruct=False, title='IPS Tank:  PFTANK1T', cxctime=True, period_xlim=[0,50], period_ylim=[0,1])
 savefig('fft_pftank1t.png')
-plot_fft(x['pftank2t'].times, x['pftank2t'].vals, reconstruct=False, title='IPS Tank:  PFTANK2T', cxctime=True, period_xlim=[0,50])
+plot_fft(x['pftank2t'].times, x['pftank2t'].vals, reconstruct=False, title='IPS Tank:  PFTANK2T', cxctime=True, period_xlim=[0,50], period_ylim=[0,1])
 savefig('fft_pftank2t.png')
 
 # Circuit 5105 - Not cycling
-plot_fft(x['pline01t'].times, x['pline01t'].vals, reconstruct=False, title='Circuit 5105:  PLINE01T', cxctime=True, period_xlim=[0,50])
+plot_fft(x['pline01t'].times, x['pline01t'].vals, reconstruct=False, title='Circuit 5105:  PLINE01T', cxctime=True, period_xlim=[0,50], period_ylim=[0,4])
 savefig('fft_pline01t.png')
-plot_fft(x['pline02t'].times, x['pline02t'].vals, reconstruct=False, title='Circuit 5105:  PLINE02T', cxctime=True, period_xlim=[0,50])
+plot_fft(x['pline02t'].times, x['pline02t'].vals, reconstruct=False, title='Circuit 5105:  PLINE02T', cxctime=True, period_xlim=[0,50], period_ylim=[0,4])
 savefig('fft_pline02t.png')
-plot_fft(x['pline03t'].times, x['pline03t'].vals, reconstruct=False, title='Circuit 5105:  PLINE03T', cxctime=True, period_xlim=[0,50])
+plot_fft(x['pline03t'].times, x['pline03t'].vals, reconstruct=False, title='Circuit 5105:  PLINE03T', cxctime=True, period_xlim=[0,50], period_ylim=[0,4])
 savefig('fft_pline03t.png')
-plot_fft(x['pline04t'].times, x['pline04t'].vals, reconstruct=False, title='Circuit 5105:  PLINE04T', cxctime=True, period_xlim=[0,50])
+plot_fft(x['pline04t'].times, x['pline04t'].vals, reconstruct=False, title='Circuit 5105:  PLINE04T', cxctime=True, period_xlim=[0,50], period_ylim=[0,4])
 savefig('fft_pline04t.png')
 
 # Circuit 5107
-plot_fft(x['pline05t'].times, x['pline05t'].vals, reconstruct=False, title='Circuit 5107:  PLINE05T', cxctime=True, period_xlim=[0,50])
+plot_fft(x['pline05t'].times, x['pline05t'].vals, reconstruct=False, title='Circuit 5107:  PLINE05T', cxctime=True, period_xlim=[0,50], period_ylim=[0,2])
 savefig('fft_pline05t.png')
-plot_fft(x['pline06t'].times, x['pline06t'].vals, reconstruct=False, title='Circuit 5107:  PLINE06T', cxctime=True, period_xlim=[0,50])
+plot_fft(x['pline06t'].times, x['pline06t'].vals, reconstruct=False, title='Circuit 5107:  PLINE06T', cxctime=True, period_xlim=[0,50], period_ylim=[0,2])
 savefig('fft_pline06t.png')
-plot_fft(x['pline07t'].times, x['pline07t'].vals, reconstruct=False, title='Circuit 5107:  PLINE07T', cxctime=True, period_xlim=[0,50])    
+plot_fft(x['pline07t'].times, x['pline07t'].vals, reconstruct=False, title='Circuit 5107:  PLINE07T', cxctime=True, period_xlim=[0,50], period_ylim=[0,2])    
 savefig('fft_pline07t.png')    
